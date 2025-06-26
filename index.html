@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="manifest" href="manifest.json">
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+  <meta charset="UTF-8">
+  <title>Switch Health</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Switch: Health Tracker</h1>
+    <div class="tabs">
+      <button onclick="showTab('bmi')">BMI</button>
+      <button onclick="showTab('bodyfat')">Body Fat %</button>
+    </div>
+
+  
+    <div id="bmi" class="tab active">
+      <label>Height (cm): <input type="number" id="bmi-height"></label>
+      <label>Weight (kg): <input type="number" id="bmi-weight"></label>
+      <button onclick="calculateBMI()">Calculate BMI</button>
+      <p id="bmi-result"></p>
+    </div>
+
+    <div id="bodyfat" class="tab">
+      <label>Waist (cm): <input type="number" id="waist"></label>
+      <label>Neck (cm): <input type="number" id="neck"></label>
+      <label>Height (cm): <input type="number" id="bf-height"></label>
+      <label>Gender:
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </label>
+      <label id="hip-label" style="display:none;">Hip (cm): <input type="number" id="hip"></label>
+      <button onclick="calculateBodyFat()">Calculate Body Fat %</button>
+      <p id="bodyfat-result"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
